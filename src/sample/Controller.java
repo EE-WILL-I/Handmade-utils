@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
@@ -44,7 +45,9 @@ public class Controller implements Initializable {
     private String extension = ".exe";
     private int copied_files_count = 0;
     private ArrayList<Label> lbl_list = new ArrayList<Label>();
-    private  ArrayList<File> files_copied_list = new ArrayList<File>();
+    private ArrayList<File> files_copied_list = new ArrayList<File>();
+    private ArrayList<Button> btn_list = new ArrayList<>();
+    private ArrayList<HBox> hbox_list = new ArrayList<>();
 
     private void setFolder(DirectoryChooser dc, String path) {
         File dir = new File(path);
@@ -83,15 +86,47 @@ public class Controller implements Initializable {
                 Files.copy(f.toPath(), temp.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
                 files_copied_list.add(temp);
 
-                Label lbl = new Label(){ }; lbl.setStyle("-fx-text-fill:#ffffff");
+                Label lbl = new Label();
+                lbl.setStyle("-fx-text-fill:#ffffff");
                 lbl.setId("copied_file_" + copied_files_count);
                 lbl.setText(temp.getName());
                 lbl_list.add(lbl);
-                if(!vBox_copied.getChildren().contains(lbl)) vBox_copied.getChildren().add(lbl);
 
-                copied_files_count++; 
+                Button btn = new Button();
+                btn.setText("-");
+                btn.setOnAction(e -> {this.Undone();});
+                btn_list.add(btn);
+
+                HBox hbox = new HBox();
+                hbox.getChildren().add(lbl);
+                hbox.getChildren().add(btn);
+                hbox_list.add(hbox);
+
+                if(!vBox_copied.getChildren().contains(hbox)) vBox_copied.getChildren().add(hbox);
+
+                copied_files_count++;
                 System.out.println(temp.getAbsolutePath());
             }
+        }
+    }
+    private void Undone()
+    {
+        if(copied_files_count > 0) {
+
+            for (File f: files_copied_list) {
+                if(f.delete()) System.out.println("deleted");
+            }
+            for (Label lbl: lbl_list) {
+              //  vBox_copied.getChildren().remove(lbl);
+            }
+            for(HBox box: hbox_list) {
+                if (!box.getChildren().isEmpty()) {
+                    box.getChildren().remove(1);
+                    box.getChildren().remove(0);
+                    vBox_copied.getChildren().remove(box);
+                }
+            }
+            copied_files_count = 0;
         }
     }
 
@@ -132,17 +167,7 @@ public class Controller implements Initializable {
     }
 
     public void btnUndone(ActionEvent actionEvent) {
-        if(copied_files_count > 0) {
-
-            for (File f: files_copied_list) {
-                if(f.delete()) System.out.println("deleted");
-            }
-            for (Label lbl: lbl_list) {
-                //lbl_list.remove(lbl);
-                vBox_copied.getChildren().remove(lbl);
-            }
-            copied_files_count = 0;
-        }
+        Undone();
     }
 
     @Override
