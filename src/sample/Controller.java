@@ -12,11 +12,7 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-//import javafx.scene.layout.FlowPane;
-//import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
-//import javafx.event.EventHandler;
-
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FilenameFilter;
@@ -24,15 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.util.*;
-//import org.omg.CORBA.portable.Delegate;
-
-//import java.security.Key;
-//import java.util.Timer;
-
-//import java.awt.*;
-//import java.beans.EventHandler;
 import javafx.scene.control.Button;
-
 
 public class Controller implements Initializable {
 

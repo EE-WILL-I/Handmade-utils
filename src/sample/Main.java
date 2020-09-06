@@ -4,18 +4,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-//import javafx.scene.paint.Color;
-//import javafx.scene.input.KeyCode;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-//import javafx.scene.Group;
-//import javafx.scene.control.*;
-//import java.util.logging.Level;
-//import java.util.logging.Logger;
-
-//import java.util.ResourceBundle;
-//import java.util.concurrent.atomic.AtomicInteger;
-//import java.beans.EventHandler;
 
 
 
