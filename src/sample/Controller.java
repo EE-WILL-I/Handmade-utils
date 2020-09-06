@@ -51,7 +51,7 @@ public class Controller implements Initializable {
             label.setText(f.getName());
 
             button.setText("-");
-            button.setStyle("-fx-background-color:# #19191a");
+            button.setStyle("-fx-background-color:#19191a");
             button.setTextFill(Paint.valueOf("#ffe712"));
             button.setMaxHeight(10);
             button.setTextAlignment(TextAlignment.CENTER);
@@ -95,7 +95,8 @@ public class Controller implements Initializable {
     private File directory_from = new File("C:/"), directory_to = new File("C:/"), directory_ext;
     private DirectoryChooser dc_from = new DirectoryChooser(), dc_to = new DirectoryChooser();
     private FileChooser fc_ext = new FileChooser();
-    private ScrollPane scrollPane;
+    @FXML
+    private Label lblInfo;
     private String extension = ".exe";
     private int copied_files_count = 0, recursionLevel = 0;
     private ArrayList<CopiedFileData> copiedFileDataList = new ArrayList<>();
@@ -173,17 +174,20 @@ public class Controller implements Initializable {
                 if(!vBox_copied.getChildren().contains(hb)) vBox_copied.getChildren().add(hb);
 
                 copied_files_count++;
+
+                lblInfo.setText("Copied: " + copied_files_count + " files.");
                 System.out.println(temp.getAbsolutePath());
             }
         }
     }
-    private void undone() {
+    private void removeAll() {
         if(copied_files_count > 0) {
             ArrayList<CopiedFileData> temp = copiedFileDataList;
            for(CopiedFileData data: copiedFileDataList) {
                data.remove();
            }
             copiedFileDataList.removeAll(temp);
+            lblInfo.setText("Deleted: " + copied_files_count + " files.");
             copied_files_count = 0;
         }
     }
@@ -194,6 +198,8 @@ public class Controller implements Initializable {
             {
                 data.remove();
                 temp = data;
+
+                lblInfo.setText("Deleted file: " + temp.file.getName());
             }
         }
         if(temp != null) copiedFileDataList.remove(temp);
@@ -236,8 +242,8 @@ public class Controller implements Initializable {
         setFolder(dc_to, field_to.getText());
     }
 
-    public void btnUndone(ActionEvent actionEvent) {
-        undone();
+    public void btnRemove(ActionEvent actionEvent) {
+        removeAll();
     }
 
     public void sliderRecursionLevel(MouseEvent mouseEvent) {
