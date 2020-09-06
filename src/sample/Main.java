@@ -44,7 +44,7 @@ public class Main extends Application {
         scene.getStylesheets().add(getClass().getResource("sample.fxml").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.setTitle("Retranslator 10X");
-        //primaryStage.getIcons().add(new Image("sample/Calc_icon.png"));
+        primaryStage.getIcons().add(new Image("sample/translator_icon.png"));
         primaryStage.setResizable(false);
         primaryStage.show();
     }

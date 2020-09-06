@@ -47,7 +47,7 @@ public class Controller implements Initializable {
             file = f;
 
             label.setStyle("-fx-text-fill:#ffffff");
-            label.setId("copied_file_" + copied_files_count);
+            label.setId("copied_file_" + copiedFilesCount);
             label.setText(f.getName());
 
             button.setText("-");
@@ -64,7 +64,7 @@ public class Controller implements Initializable {
             if(file.delete()) System.out.println("deleted");
             hbox.getChildren().remove(1);
             hbox.getChildren().remove(0);
-            vBox_copied.getChildren().remove(hbox);
+            vBoxCopied.getChildren().remove(hbox);
 
         }
         public HBox getHbox()
@@ -84,21 +84,20 @@ public class Controller implements Initializable {
         }
     }
 
-    public Label lbl_Folder_To, lbl_Extension, lbl_Folder_From;
-    public TextField field_from, field_to, field_extension;
-    public VBox vBox_copied;
+    public Label labelFolderTo, labelExtension, labelFolderFrom;
+    public TextField fieldFrom, fieldTo, fieldExtension;
+    public VBox vBoxCopied;
     public static Stage PS;
 
-    //private Button btn_Set_From, btn_Set_To, btn_Translate;
     @FXML
-    private Slider slider_recursionLevel;
-    private File directory_from = new File("C:/"), directory_to = new File("C:/"), directory_ext;
-    private DirectoryChooser dc_from = new DirectoryChooser(), dc_to = new DirectoryChooser();
-    private FileChooser fc_ext = new FileChooser();
+    private Slider sliderRecursionLevel;
+    private File directoryFrom = new File("C:/"), directoryTo = new File("C:/"), directoryToExtension;
+    private DirectoryChooser dcFrom = new DirectoryChooser(), dcTo = new DirectoryChooser();
+    private FileChooser fcExt = new FileChooser();
     @FXML
-    private Label lblInfo;
+    private Label labelInfo;
     private String extension = ".exe";
-    private int copied_files_count = 0, recursionLevel = 0;
+    private int copiedFilesCount = 0, recursionLevel = 0;
     private ArrayList<CopiedFileData> copiedFileDataList = new ArrayList<>();
 
     private void setFolder(DirectoryChooser dc, String path) {
@@ -119,12 +118,12 @@ public class Controller implements Initializable {
         ext = file.getName();
         String[] text = ext.split("\\.");
         if (!text[text.length - 1].equals("")) extension = text[text.length - 1];
-        field_extension.setText("." + extension);
+        fieldExtension.setText("." + extension);
         System.out.println(extension);
     }
 
     private void getInnerDirectory(File dirFrom, int recLevel) throws IOException {
-        if(dirFrom != directory_to) {
+        if(dirFrom != directoryTo) {
             translate(dirFrom);
             System.out.println(dirFrom.getAbsolutePath());
 
@@ -155,9 +154,9 @@ public class Controller implements Initializable {
         }
     }
 
-    private void translate(File dirfrom) throws IOException {
+    private void translate(File dirFrom) throws IOException {
         File file = new File("");
-        File[] matches = dirfrom.listFiles(new FilenameFilter() {
+        File[] matches = dirFrom.listFiles(new FilenameFilter() {
             public boolean accept(File file, String name) {
                 return name.endsWith(extension);
             }
@@ -165,30 +164,30 @@ public class Controller implements Initializable {
         assert matches != null;
         for (File f : matches) {
             System.out.println(f.getName());
-            File temp = new File(directory_to.getAbsolutePath() + "/" + f.getName());
+            File temp = new File(directoryTo.getAbsolutePath() + "/" + f.getName());
             if (temp.createNewFile()) {
                 Files.copy(f.toPath(), temp.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
 
                 copiedFileDataList.add(new CopiedFileData(temp));
-                HBox hb = ((CopiedFileData)copiedFileDataList.toArray()[copied_files_count]).getHbox();
-                if(!vBox_copied.getChildren().contains(hb)) vBox_copied.getChildren().add(hb);
+                HBox hb = ((CopiedFileData)copiedFileDataList.toArray()[copiedFilesCount]).getHbox();
+                if(!vBoxCopied.getChildren().contains(hb)) vBoxCopied.getChildren().add(hb);
 
-                copied_files_count++;
+                copiedFilesCount++;
 
-                lblInfo.setText("Copied: " + copied_files_count + " files.");
+                labelInfo.setText("Copied: " + copiedFilesCount + " files.");
                 System.out.println(temp.getAbsolutePath());
             }
         }
     }
     private void removeAll() {
-        if(copied_files_count > 0) {
+        if(copiedFilesCount > 0) {
             ArrayList<CopiedFileData> temp = copiedFileDataList;
-           for(CopiedFileData data: copiedFileDataList) {
-               data.remove();
-           }
+            for(CopiedFileData data: copiedFileDataList) {
+                data.remove();
+            }
             copiedFileDataList.removeAll(temp);
-            lblInfo.setText("Deleted: " + copied_files_count + " files.");
-            copied_files_count = 0;
+            labelInfo.setText("Deleted: " + copiedFilesCount + " files.");
+            copiedFilesCount = 0;
         }
     }
     private void removeCopiedFile(Button btn) {
@@ -199,47 +198,47 @@ public class Controller implements Initializable {
                 data.remove();
                 temp = data;
 
-                lblInfo.setText("Deleted file: " + temp.file.getName());
+                labelInfo.setText("Deleted file: " + temp.file.getName());
             }
         }
         if(temp != null) copiedFileDataList.remove(temp);
-        copied_files_count--;
+        copiedFilesCount--;
     }
 
     public void btnSetFolder_From(ActionEvent actionEvent) {
-        directory_from = dc_from.showDialog(PS);
-        if (directory_from != null)
-            setFolder(dc_from, field_from, directory_from);
+        directoryFrom = dcFrom.showDialog(PS);
+        if (directoryFrom != null)
+            setFolder(dcFrom, fieldFrom, directoryFrom);
     }
 
     public void btnSetFolder_To(ActionEvent actionEvent) {
-        directory_to = dc_to.showDialog(PS);
-        if (directory_to != null)
-            setFolder(dc_to, field_to, directory_to);
+        directoryTo = dcTo.showDialog(PS);
+        if (directoryTo != null)
+            setFolder(dcTo, fieldTo, directoryTo);
     }
 
     public void btnSetExtension(ActionEvent actionEvent) {
-        directory_ext = fc_ext.showOpenDialog(PS);
-        if (directory_ext != null)
-            setExtension(directory_ext.getAbsolutePath());
+        directoryToExtension = fcExt.showOpenDialog(PS);
+        if (directoryToExtension != null)
+            setExtension(directoryToExtension.getAbsolutePath());
     }
 
     public void btmTranslate(ActionEvent actionEvent) throws IOException {
-        if ((!dc_from.getInitialDirectory().getAbsolutePath().isEmpty()) && (!dc_to.getInitialDirectory().getAbsolutePath().isEmpty()) && (!extension.isEmpty()))
-            getInnerDirectory(directory_from, recursionLevel);
+        if ((!dcFrom.getInitialDirectory().getAbsolutePath().isEmpty()) && (!dcTo.getInitialDirectory().getAbsolutePath().isEmpty()) && (!extension.isEmpty()))
+            getInnerDirectory(directoryFrom, recursionLevel);
     }
 
     public void field_OnFolderFromChanged(KeyEvent inputMethodEvent) {
-        setFolder(dc_from, field_from.getText());
+        setFolder(dcFrom, fieldFrom.getText());
     }
 
     public void field_OnExtensionChanged(KeyEvent inputMethodEvent) {
-        extension = field_extension.getText();
+        extension = fieldExtension.getText();
         System.out.println(extension);
     }
 
     public void field_OnFolderToChanged(KeyEvent inputMethodEvent) {
-        setFolder(dc_to, field_to.getText());
+        setFolder(dcTo, fieldTo.getText());
     }
 
     public void btnRemove(ActionEvent actionEvent) {
@@ -247,15 +246,15 @@ public class Controller implements Initializable {
     }
 
     public void sliderRecursionLevel(MouseEvent mouseEvent) {
-        slider_recursionLevel.setValue((int)slider_recursionLevel.getValue());
-        recursionLevel = (int) slider_recursionLevel.getValue();
+        sliderRecursionLevel.setValue((int) sliderRecursionLevel.getValue());
+        recursionLevel = (int) sliderRecursionLevel.getValue();
         System.out.println(recursionLevel);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setFolder(dc_from, field_from, directory_from);
-        setFolder(dc_to, field_to, directory_to);
-        field_extension.setText(extension);
+        setFolder(dcFrom, fieldFrom, directoryFrom);
+        setFolder(dcTo, fieldTo, directoryTo);
+        fieldExtension.setText(extension);
     }
 }
