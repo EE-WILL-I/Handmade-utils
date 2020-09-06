@@ -205,7 +205,7 @@ public class Controller implements Initializable {
         copiedFilesCount--;
     }
 
-    public void btnSetFolder_From(ActionEvent actionEvent) {
+    public void btnSetFolder_From(KeyEvent actionEvent) {
         directoryFrom = dcFrom.showDialog(PS);
         if (directoryFrom != null)
             setFolder(dcFrom, fieldFrom, directoryFrom);
