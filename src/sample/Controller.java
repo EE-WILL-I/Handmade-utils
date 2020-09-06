@@ -51,7 +51,7 @@ public class Controller implements Initializable {
             label.setText(f.getName());
 
             button.setText("-");
-            button.setStyle("-fx-background-color:#1e1e1e");
+            button.setStyle("-fx-background-color:# #19191a");
             button.setTextFill(Paint.valueOf("#ffe712"));
             button.setMaxHeight(10);
             button.setTextAlignment(TextAlignment.CENTER);
@@ -95,6 +95,7 @@ public class Controller implements Initializable {
     private File directory_from = new File("C:/"), directory_to = new File("C:/"), directory_ext;
     private DirectoryChooser dc_from = new DirectoryChooser(), dc_to = new DirectoryChooser();
     private FileChooser fc_ext = new FileChooser();
+    private ScrollPane scrollPane;
     private String extension = ".exe";
     private int copied_files_count = 0, recursionLevel = 0;
     private ArrayList<CopiedFileData> copiedFileDataList = new ArrayList<>();
@@ -219,7 +220,6 @@ public class Controller implements Initializable {
 
     public void btmTranslate(ActionEvent actionEvent) throws IOException {
         if ((!dc_from.getInitialDirectory().getAbsolutePath().isEmpty()) && (!dc_to.getInitialDirectory().getAbsolutePath().isEmpty()) && (!extension.isEmpty()))
-            //translate(directory_from);
             getInnerDirectory(directory_from, recursionLevel);
     }
 

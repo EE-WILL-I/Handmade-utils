@@ -31,17 +31,14 @@
             <Label alignment="CENTER" contentDisplay="TOP" layoutX="343.0" layoutY="3.0" prefHeight="22.0" prefWidth="276.0" text="Copied files" textAlignment="CENTER" textFill="WHITE" />
             <AnchorPane layoutX="343.0" layoutY="30.0" prefHeight="270.0" prefWidth="276.0" style="-fx-background-color: #ffffff;">
                <children>
-                  <ScrollPane hbarPolicy="NEVER" prefHeight="270.0" prefWidth="276.0">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="268.0" prefWidth="275.0">
-                           <children>
-                              <VBox fx:id="vBox_copied" prefHeight="270.0" prefWidth="276.0" spacing="7.0" style="-fx-background-color: #1e1e1e; -fx-border-width: 2px; -fx-border-color: #ffe712;" AnchorPane.topAnchor="0.0">
-                                 <padding>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </padding>
-                              </VBox>
-                           </children></AnchorPane>
-                    </content>
+                  <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="270.0" prefWidth="276.0" style="-fx-background-color: #000000;">
+                     <content>
+                        <VBox fx:id="vBox_copied" prefHeight="268.0" prefWidth="274.0" spacing="7.0" style="-fx-background-color: #1e1e1e; -fx-border-width: 2px; -fx-border-color: #ffe712;">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
+                     </content>
                   </ScrollPane>
                </children>
             </AnchorPane>
