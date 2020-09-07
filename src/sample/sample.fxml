@@ -11,20 +11,20 @@
          <children>
             <Button layoutX="8.0" layoutY="206.0" mnemonicParsing="false" onAction="#btmTranslate" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: #1e1e1e; -fx-border-width: 2px; -fx-border-color: #ffe712;" text="Translate" textFill="WHITE" />
             <Label fx:id="labelFolderFrom" layoutX="7.0" layoutY="5.0" text="From" textFill="WHITE" />
-            <TextField fx:id="fieldFrom" layoutX="6.0" layoutY="31.0" onKeyReleased="#field_OnFolderFromChanged" prefHeight="22.0" prefWidth="241.0" />
-            <TextField fx:id="fieldExtension" layoutX="6.0" layoutY="97.0" onKeyReleased="#field_OnExtensionChanged" prefHeight="22.0" prefWidth="241.0" />
+            <TextField fx:id="fieldFrom" layoutX="6.0" layoutY="31.0" onKeyReleased="#field_OnFolderFromChanged" prefHeight="22.0" prefWidth="233.0" />
+            <TextField fx:id="fieldExtension" layoutX="6.0" layoutY="97.0" onKeyReleased="#field_OnExtensionChanged" prefHeight="22.0" prefWidth="233.0" />
             <Label fx:id="labelExtension" layoutX="9.0" layoutY="70.0" text="Extension" textFill="WHITE" />
             <Label fx:id="labelFolderTo" layoutX="13.0" layoutY="137.0" text="To" textFill="WHITE" />
-            <TextField fx:id="fieldTo" layoutX="6.0" layoutY="160.0" onKeyReleased="#field_OnFolderToChanged" prefHeight="22.0" prefWidth="241.0" />
-            <Button layoutX="247.0" layoutY="31.0" mnemonicParsing="false" onAction="#btnSetFolder_From" style="-fx-background-color: #1e1e1e;" text="#" textFill="#ffe712">
+            <TextField fx:id="fieldTo" layoutX="6.0" layoutY="160.0" onKeyReleased="#field_OnFolderToChanged" prefHeight="22.0" prefWidth="233.0" />
+            <Button layoutX="240.0" layoutY="31.0" mnemonicParsing="false" onAction="#btnSetFolder_From" style="-fx-background-color: #1e1e1e;" text="#" textFill="#ffe712">
                <font>
                   <Font name="System Bold" size="11.0" />
                </font></Button>
-            <Button layoutX="247.0" layoutY="160.0" mnemonicParsing="false" onAction="#btnSetFolder_To" style="-fx-background-color: #1e1e1e;" text="#" textFill="#ffe712">
+            <Button layoutX="240.0" layoutY="160.0" mnemonicParsing="false" onAction="#btnSetFolder_To" style="-fx-background-color: #1e1e1e;" text="#" textFill="#ffe712">
                <font>
                   <Font name="System Bold" size="11.0" />
                </font></Button>
-            <Button layoutX="247.0" layoutY="97.0" mnemonicParsing="false" onAction="#btnSetExtension" style="-fx-background-color: #1e1e1e;" text="#" textFill="#ffe712">
+            <Button layoutX="240.0" layoutY="97.0" mnemonicParsing="false" onAction="#btnSetExtension" style="-fx-background-color: #1e1e1e;" text="#" textFill="#ffe712">
                <font>
                   <Font name="System Bold Italic" size="11.0" />
                </font></Button>
@@ -45,10 +45,10 @@
             <Button fx:id="btnUndone" layoutX="8.0" layoutY="303.0" mnemonicParsing="false" onAction="#btnRemove" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: #1e1e1e; -fx-border-width: 2px; -fx-border-color: #ffe712;" text="Remove all" textFill="WHITE" />
             <Slider fx:id="sliderRecursionLevel" blockIncrement="1.0" layoutX="8.0" layoutY="255.0" majorTickUnit="1.0" max="5.0" minorTickCount="5" onMouseReleased="#sliderRecursionLevel" prefHeight="38.0" prefWidth="80.0" showTickLabels="true" style="-fx-background-color: #1e1e1e; -fx-border-width: 2px; -fx-border-color: #ffe712;" />
             <Label layoutX="12.0" layoutY="238.0" text="Recursion level" textFill="WHITE" />
-            <Label fx:id="labelInfo" alignment="CENTER" contentDisplay="TOP" layoutX="281.0" layoutY="335.0" prefHeight="22.0" prefWidth="233.0" text="Choose directories and extension to copy" textAlignment="CENTER" textFill="WHITE" />
-            <Pane layoutX="99.0" layoutY="213.0" prefHeight="139.0" prefWidth="163.0" style="-fx-background-color: #1e1e1e;">
+            <Label fx:id="labelInfo" alignment="CENTER" contentDisplay="TOP" layoutX="281.0" layoutY="334.0" prefHeight="22.0" prefWidth="233.0" text="Choose directories and extension to copy" textAlignment="CENTER" textFill="WHITE" />
+            <Pane layoutX="99.0" layoutY="206.0" prefHeight="124.0" prefWidth="163.0" style="-fx-background-color: #1e1e1e; -fx-border-width: 2px; -fx-border-color: #ffe712;">
                <children>
-                  <TextField fx:id="fieldPrefix" layoutX="13.0" layoutY="17.0" minHeight="18.0" onKeyReleased="#field_OnPrefixChanged" prefHeight="14.0" prefWidth="137.0">
+                  <TextField fx:id="fieldPrefix" layoutX="13.0" layoutY="19.0" minHeight="18.0" onKeyReleased="#field_OnPrefixChanged" prefHeight="14.0" prefWidth="137.0">
                      <font>
                         <Font size="9.0" />
                      </font></TextField>
@@ -57,10 +57,10 @@
                         <Font size="9.0" />
                      </font></TextField>
                </children></Pane>
-            <Label fx:id="labelFolderFrom1" layoutX="113.0" layoutY="213.0" text="Prefix_" textFill="WHITE" />
-            <Label fx:id="labelExtension1" layoutX="114.0" layoutY="254.0" text="_Full name_" textFill="WHITE" />
-            <Label fx:id="labelFolderTo1" layoutX="118.0" layoutY="295.0" text="_Postfix" textFill="WHITE" />
-            <TextField fx:id="fieldPostfix" layoutX="111.0" layoutY="310.0" minHeight="18.0" onKeyReleased="#field_OnPostfixChanged" prefHeight="6.0" prefWidth="137.0">
+            <Label fx:id="labelFolderFrom1" layoutX="114.0" layoutY="209.0" text="Prefix_" textFill="WHITE" />
+            <Label fx:id="labelExtension1" layoutX="114.0" layoutY="247.0" text="_Full name_" textFill="WHITE" />
+            <Label fx:id="labelFolderTo1" layoutX="117.0" layoutY="286.0" text="_Postfix" textFill="WHITE" />
+            <TextField fx:id="fieldPostfix" layoutX="111.0" layoutY="303.0" minHeight="18.0" onKeyReleased="#field_OnPostfixChanged" prefHeight="6.0" prefWidth="137.0">
                <font>
                   <Font size="9.0" />
                </font></TextField>
