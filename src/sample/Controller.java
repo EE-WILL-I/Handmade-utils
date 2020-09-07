@@ -24,9 +24,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.util.*;
+import java.util.function.Supplier;
+
 import javafx.scene.control.Button;
 
 public class Controller implements Initializable {
+
 
     private class CopiedFileData {
         private File file;
@@ -90,12 +93,14 @@ public class Controller implements Initializable {
 
     @FXML
     private Slider sliderRecursionLevel;
+    @FXML
+    private TextField fieldPrefix, fieldFullName, fieldPostfix;
     private File directoryFrom = new File("C:/"), directoryTo = new File("C:/"), directoryToExtension;
     private DirectoryChooser dcFrom = new DirectoryChooser(), dcTo = new DirectoryChooser();
     private FileChooser fcExt = new FileChooser();
     @FXML
     private Label labelInfo;
-    private String extension = ".exe";
+    private String extension = ".exe", prefix = "copyof_", fullName = "", postfix = "";
     private int copiedFilesCount = 0, recursionLevel = 0;
     private ArrayList<CopiedFileData> copiedFileDataList = new ArrayList<>();
 
@@ -122,7 +127,7 @@ public class Controller implements Initializable {
     }
 
     private void getInnerDirectory(File dirFrom, int recLevel) throws IOException {
-        if(dirFrom != directoryTo) {
+        if(!dirFrom.getAbsolutePath().equals(directoryTo.getAbsolutePath())) {
             translate(dirFrom);
             System.out.println(dirFrom.getAbsolutePath());
 
@@ -153,6 +158,15 @@ public class Controller implements Initializable {
         }
     }
 
+
+    private File SetName(File file) {
+        File newFile = file;
+         if (!prefix.isEmpty())   newFile = Renamer.Rename(newFile, Renamer.RenamingType.PREFIX, prefix);
+         if (!fullName.isEmpty()) newFile = Renamer.Rename(newFile, Renamer.RenamingType.FULL_NAME, fullName);
+         if (!postfix.isEmpty())  newFile = Renamer.Rename(newFile, Renamer.RenamingType.POSTFIX, postfix);
+         return newFile;
+    }
+
     private void translate(File dirFrom) throws IOException {
         File file = new File("");
         File[] matches = dirFrom.listFiles(new FilenameFilter() {
@@ -160,11 +174,14 @@ public class Controller implements Initializable {
                 return name.endsWith(extension);
             }
         });
+
         assert matches != null;
         for (File f : matches) {
             System.out.println(f.getName());
             File temp = new File(directoryTo.getAbsolutePath() + "/" + f.getName());
-            temp = Renamer.Rename(temp, Renamer.RenamingType.PREFIX, "copyof_");
+
+            temp = SetName(temp);
+
             if (temp.createNewFile()) {
                 Files.copy(f.toPath(), temp.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
 
@@ -241,6 +258,18 @@ public class Controller implements Initializable {
         setFolder(dcTo, fieldTo.getText());
     }
 
+    public void field_OnPrefixChanged(KeyEvent keyEvent) {
+        prefix = fieldPrefix.getText();
+    }
+
+    public void field_OnPostfixChanged(KeyEvent keyEvent) {
+        postfix = fieldPostfix.getText();
+    }
+
+    public void field_OnFullNameChanged(KeyEvent keyEvent) {
+        fullName = fieldFullName.getText();
+    }
+
     public void btnRemove(ActionEvent actionEvent) {
         removeAll();
     }
@@ -256,5 +285,6 @@ public class Controller implements Initializable {
         setFolder(dcFrom, fieldFrom, directoryFrom);
         setFolder(dcTo, fieldTo, directoryTo);
         fieldExtension.setText(extension);
+        fieldPrefix.setText(prefix);
     }
 }

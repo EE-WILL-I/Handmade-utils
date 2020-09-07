@@ -5,35 +5,35 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="570.0" prefWidth="315.0" style="-fx-background-color: #19191a;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane id="AnchorPane" prefHeight="368.0" prefWidth="541.0" style="-fx-background-color: #19191a;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <AnchorPane layoutX="6.0" layoutY="7.0" prefHeight="556.0" prefWidth="303.0">
+      <AnchorPane layoutX="7.0" layoutY="7.0" prefHeight="352.0" prefWidth="525.0">
          <children>
-            <Button layoutX="27.0" layoutY="214.0" mnemonicParsing="false" onAction="#btmTranslate" style="-fx-background-color: #1e1e1e; -fx-border-width: 2px; -fx-border-color: #ffe712;" text="Translate" textFill="WHITE" />
-            <Label fx:id="labelFolderFrom" layoutX="26.0" layoutY="5.0" text="From" textFill="WHITE" />
-            <TextField fx:id="fieldFrom" layoutX="25.0" layoutY="31.0" onKeyReleased="#field_OnFolderFromChanged" prefHeight="22.0" prefWidth="241.0" />
-            <TextField fx:id="fieldExtension" layoutX="25.0" layoutY="97.0" onKeyReleased="#field_OnExtensionChanged" prefHeight="22.0" prefWidth="241.0" />
-            <Label fx:id="labelExtension" layoutX="28.0" layoutY="70.0" text="Extension" textFill="WHITE" />
-            <Label fx:id="labelFolderTo" layoutX="32.0" layoutY="139.0" text="To" textFill="WHITE" />
-            <TextField fx:id="fieldTo" layoutX="25.0" layoutY="163.0" onKeyReleased="#field_OnFolderToChanged" prefHeight="22.0" prefWidth="241.0" />
-            <Button layoutX="266.0" layoutY="31.0" mnemonicParsing="false" onAction="#btnSetFolder_From" style="-fx-background-color: #1e1e1e;" text="#" textFill="#ffe712">
+            <Button layoutX="8.0" layoutY="206.0" mnemonicParsing="false" onAction="#btmTranslate" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: #1e1e1e; -fx-border-width: 2px; -fx-border-color: #ffe712;" text="Translate" textFill="WHITE" />
+            <Label fx:id="labelFolderFrom" layoutX="7.0" layoutY="5.0" text="From" textFill="WHITE" />
+            <TextField fx:id="fieldFrom" layoutX="6.0" layoutY="31.0" onKeyReleased="#field_OnFolderFromChanged" prefHeight="22.0" prefWidth="241.0" />
+            <TextField fx:id="fieldExtension" layoutX="6.0" layoutY="97.0" onKeyReleased="#field_OnExtensionChanged" prefHeight="22.0" prefWidth="241.0" />
+            <Label fx:id="labelExtension" layoutX="9.0" layoutY="70.0" text="Extension" textFill="WHITE" />
+            <Label fx:id="labelFolderTo" layoutX="13.0" layoutY="137.0" text="To" textFill="WHITE" />
+            <TextField fx:id="fieldTo" layoutX="6.0" layoutY="160.0" onKeyReleased="#field_OnFolderToChanged" prefHeight="22.0" prefWidth="241.0" />
+            <Button layoutX="247.0" layoutY="31.0" mnemonicParsing="false" onAction="#btnSetFolder_From" style="-fx-background-color: #1e1e1e;" text="#" textFill="#ffe712">
                <font>
                   <Font name="System Bold" size="11.0" />
                </font></Button>
-            <Button layoutX="266.0" layoutY="163.0" mnemonicParsing="false" onAction="#btnSetFolder_To" style="-fx-background-color: #1e1e1e;" text="#" textFill="#ffe712">
+            <Button layoutX="247.0" layoutY="160.0" mnemonicParsing="false" onAction="#btnSetFolder_To" style="-fx-background-color: #1e1e1e;" text="#" textFill="#ffe712">
                <font>
                   <Font name="System Bold" size="11.0" />
                </font></Button>
-            <Button layoutX="266.0" layoutY="97.0" mnemonicParsing="false" onAction="#btnSetExtension" style="-fx-background-color: #1e1e1e;" text="#" textFill="#ffe712">
+            <Button layoutX="247.0" layoutY="97.0" mnemonicParsing="false" onAction="#btnSetExtension" style="-fx-background-color: #1e1e1e;" text="#" textFill="#ffe712">
                <font>
                   <Font name="System Bold Italic" size="11.0" />
                </font></Button>
-            <Label alignment="CENTER" contentDisplay="TOP" layoutX="11.0" layoutY="261.0" prefHeight="22.0" prefWidth="276.0" text="Copied files" textAlignment="CENTER" textFill="WHITE" />
-            <AnchorPane layoutX="11.0" layoutY="283.0" prefHeight="246.0" prefWidth="276.0" style="-fx-background-color: #19191a;">
+            <Label alignment="CENTER" contentDisplay="TOP" layoutX="281.0" layoutY="1.0" prefHeight="22.0" prefWidth="233.0" text="Copied files" textAlignment="CENTER" textFill="WHITE" />
+            <AnchorPane layoutX="277.0" layoutY="28.0" prefHeight="302.0" prefWidth="241.0" style="-fx-background-color: #19191a;">
                <children>
-                  <ScrollPane fx:id="scrollPane" prefHeight="246.0" prefWidth="283.0" style="-fx-background-color: #19191a;">
+                  <ScrollPane fx:id="scrollPane" prefHeight="304.0" prefWidth="241.0" style="-fx-background-color: #19191a;">
                      <content>
-                        <VBox fx:id="vBoxCopied" prefHeight="244.0" prefWidth="281.0" spacing="4.0" style="-fx-background-color: #1e1e1e; -fx-border-width: 2px; -fx-border-color: #ffe712;">
+                        <VBox fx:id="vBoxCopied" prefHeight="302.0" prefWidth="239.0" spacing="4.0" style="-fx-background-color: #1e1e1e; -fx-border-width: 2px; -fx-border-color: #ffe712;">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
@@ -42,10 +42,28 @@
                   </ScrollPane>
                </children>
             </AnchorPane>
-            <Button fx:id="btnUndone" layoutX="110.0" layoutY="214.0" mnemonicParsing="false" onAction="#btnRemove" style="-fx-background-color: #1e1e1e; -fx-border-width: 2px; -fx-border-color: #ffe712;" text="Remove all" textFill="WHITE" />
-            <Slider fx:id="sliderRecursionLevel" blockIncrement="1.0" layoutX="201.0" layoutY="213.0" majorTickUnit="1.0" max="5.0" minorTickCount="5" onMouseReleased="#sliderRecursionLevel" prefHeight="22.0" prefWidth="65.0" showTickLabels="true" showTickMarks="true" style="-fx-background-color: #1e1e1e; -fx-border-width: 2px; -fx-border-color: #ffe712;" />
-            <Label layoutX="197.0" layoutY="195.0" text="Recursion level" textFill="WHITE" />
-            <Label fx:id="labelInfo" alignment="CENTER" contentDisplay="TOP" layoutX="15.0" layoutY="530.0" prefHeight="22.0" prefWidth="276.0" text="Choose directories and extension to copy" textAlignment="CENTER" textFill="WHITE" />
+            <Button fx:id="btnUndone" layoutX="8.0" layoutY="303.0" mnemonicParsing="false" onAction="#btnRemove" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: #1e1e1e; -fx-border-width: 2px; -fx-border-color: #ffe712;" text="Remove all" textFill="WHITE" />
+            <Slider fx:id="sliderRecursionLevel" blockIncrement="1.0" layoutX="8.0" layoutY="255.0" majorTickUnit="1.0" max="5.0" minorTickCount="5" onMouseReleased="#sliderRecursionLevel" prefHeight="38.0" prefWidth="80.0" showTickLabels="true" style="-fx-background-color: #1e1e1e; -fx-border-width: 2px; -fx-border-color: #ffe712;" />
+            <Label layoutX="12.0" layoutY="238.0" text="Recursion level" textFill="WHITE" />
+            <Label fx:id="labelInfo" alignment="CENTER" contentDisplay="TOP" layoutX="281.0" layoutY="335.0" prefHeight="22.0" prefWidth="233.0" text="Choose directories and extension to copy" textAlignment="CENTER" textFill="WHITE" />
+            <Pane layoutX="99.0" layoutY="213.0" prefHeight="139.0" prefWidth="163.0" style="-fx-background-color: #1e1e1e;">
+               <children>
+                  <TextField fx:id="fieldPrefix" layoutX="13.0" layoutY="17.0" minHeight="18.0" onKeyReleased="#field_OnPrefixChanged" prefHeight="14.0" prefWidth="137.0">
+                     <font>
+                        <Font size="9.0" />
+                     </font></TextField>
+                  <TextField fx:id="fieldFullName" layoutX="13.0" layoutY="58.0" minHeight="18.0" onKeyReleased="#field_OnFullNameChanged" prefHeight="14.0" prefWidth="137.0">
+                     <font>
+                        <Font size="9.0" />
+                     </font></TextField>
+               </children></Pane>
+            <Label fx:id="labelFolderFrom1" layoutX="113.0" layoutY="213.0" text="Prefix_" textFill="WHITE" />
+            <Label fx:id="labelExtension1" layoutX="114.0" layoutY="254.0" text="_Full name_" textFill="WHITE" />
+            <Label fx:id="labelFolderTo1" layoutX="118.0" layoutY="295.0" text="_Postfix" textFill="WHITE" />
+            <TextField fx:id="fieldPostfix" layoutX="111.0" layoutY="310.0" minHeight="18.0" onKeyReleased="#field_OnPostfixChanged" prefHeight="6.0" prefWidth="137.0">
+               <font>
+                  <Font size="9.0" />
+               </font></TextField>
          </children>
       </AnchorPane>
    </children>
