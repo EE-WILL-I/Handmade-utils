@@ -4,6 +4,8 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -13,6 +15,8 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+
+import java.awt.*;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FilenameFilter;
@@ -26,7 +30,7 @@ public class Controller implements Initializable {
 
     private class CopiedFileData {
         private File file;
-        private Label label = new Label();
+        private Button label = new Button();
         private Button button = new Button();
         private HBox hbox = new HBox();
 
@@ -34,9 +38,16 @@ public class Controller implements Initializable {
         {
             file = f;
 
-            label.setStyle("-fx-text-fill:#ffffff");
+            label.setStyle("-fx-text-fill:#ffffff; -fx-background-color:#19191a;");
             label.setId("copied_file_" + copiedFilesCount);
             label.setText(f.getName());
+            label.setOnAction(e -> {
+                try {
+                    Desktop.getDesktop().open(new File((f.getAbsoluteFile().toString().replaceAll(f.getName(), ""))));
+                } catch (IOException ex) {
+                    System.out.println("Cannot open " + f.getName() + " file directory");
+                }
+            });
 
             button.setText("-");
             button.setStyle("-fx-background-color:#19191a");
@@ -63,7 +74,7 @@ public class Controller implements Initializable {
         {
             return  file;
         }
-        public Label getLabel(){
+        public Button getLabel(){
             return label;
         }
         public Button getButton()
@@ -153,6 +164,7 @@ public class Controller implements Initializable {
         for (File f : matches) {
             System.out.println(f.getName());
             File temp = new File(directoryTo.getAbsolutePath() + "/" + f.getName());
+            temp = Renamer.Rename(temp, Renamer.RenamingType.PREFIX, "copyof_");
             if (temp.createNewFile()) {
                 Files.copy(f.toPath(), temp.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
 
@@ -193,7 +205,7 @@ public class Controller implements Initializable {
         copiedFilesCount--;
     }
 
-    public void btnSetFolder_From(KeyEvent actionEvent) {
+    public void btnSetFolder_From(ActionEvent actionEvent) {
         directoryFrom = dcFrom.showDialog(PS);
         if (directoryFrom != null)
             setFolder(dcFrom, fieldFrom, directoryFrom);

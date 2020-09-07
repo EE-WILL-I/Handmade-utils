@@ -11,7 +11,7 @@
          <children>
             <Button layoutX="27.0" layoutY="214.0" mnemonicParsing="false" onAction="#btmTranslate" style="-fx-background-color: #1e1e1e; -fx-border-width: 2px; -fx-border-color: #ffe712;" text="Translate" textFill="WHITE" />
             <Label fx:id="labelFolderFrom" layoutX="26.0" layoutY="5.0" text="From" textFill="WHITE" />
-            <TextField fx:id="fieldFrom" layoutX="25.0" layoutY="31.0" onKeyReleased="#btnSetFolder_From" prefHeight="22.0" prefWidth="241.0" />
+            <TextField fx:id="fieldFrom" layoutX="25.0" layoutY="31.0" onKeyReleased="#field_OnFolderFromChanged" prefHeight="22.0" prefWidth="241.0" />
             <TextField fx:id="fieldExtension" layoutX="25.0" layoutY="97.0" onKeyReleased="#field_OnExtensionChanged" prefHeight="22.0" prefWidth="241.0" />
             <Label fx:id="labelExtension" layoutX="28.0" layoutY="70.0" text="Extension" textFill="WHITE" />
             <Label fx:id="labelFolderTo" layoutX="32.0" layoutY="139.0" text="To" textFill="WHITE" />

@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Retransmitter10x:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Retransmitter10x_jar</output-path>
+    <root id="archive" name="ZetaDraw.jar">
+      <element id="module-output" name="Retransmitter10X" />
+      <element id="library" level="application" name="lib" />
+    </root>
+  </artifact>
+</component>
